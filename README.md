@@ -1,7 +1,6 @@
 # Simple DB
 
-A simple introduction to Flat Files and CSV files.  Insert, Update and Delete.  Search Flat Files. Sort Flat Files. Create Test Files.  Extract Columns. Select Rows.
-Create Test Files.
+A simple introduction to Flat Files and CSV files.  Insert, Update and Delete.  Search Flat Files. Sort Flat Files. Create and Copy Files.  Extract Columns. Select Rows.
 
 ## Install and Build
 
