@@ -1,8 +1,27 @@
 # Simple DB
 
-A simple introduction to Flat Files and CSV files.
+A simple introduction to Flat Files and CSV files.  Insert, Update and Delete.  Search Flat Files. Sort Flat Files. Create Test Files.  Extract Columns. Select Rows.
+Create Test Files.
 
 ## Install and Build
 
 The is a C# Console-Mode Project.  Use Visual Studio 2022 and above to compile.  
+
+## Performance
+
+Performance depends on the number of rows in the Flat Files.  
+
+| Rows | Inserts Per Second |
+| --- | --- |
+| 100 | 1000 |
+| 5K | 333 |
+| 10K | 320 |
+| 50K | 200 |
+| 100K | 50 |
+
+
+
+
+
+
 
