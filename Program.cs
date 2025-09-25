@@ -6,7 +6,7 @@ namespace SimpleDB
     {
         static void Main(string[] args)
         {
-            // T1()
+            // T2();
         }
 
 
@@ -24,20 +24,34 @@ namespace SimpleDB
             Console.WriteLine(" ms");
         }
 
+        static void T2()
+        {
+            var a = IndexUtil.MemIndexById("b.csv", 1);
+            foreach (string s in a)
+            {
+                Console.WriteLine(s);
+            }
+        }
+
+        static void T3()
+        {
+            IndexUtil.IndexById("b.csv", "c.csv", 1);
+        }
+
         static void M1()
         {
             string[] x = { "e", "c", "a", "d", "g", "s" };
             File.WriteAllLines("a.txt", x);
         }
 
-        static void M2() 
+        static void M2()
         {
             string[] x = { "e|g|d", "c|y|u", "a|w|e", "d|n|k", "g|q|c", "s|a|p" };
             File.WriteAllLines("a.txt", x);
         }
 
-        static void M3() 
-        { 
+        static void M3()
+        {
             List<string> x = new List<string>();
             for (int i = 0; i < 10; i++)
             {
@@ -68,13 +82,13 @@ namespace SimpleDB
         {
             List<Person> list = new List<Person>();
             list.Add(new Person(1, "Bob", "Barker", "123 Windy Hill Rd", "Salt Lake", "NV", "US", "21343", "(212) 432-8333"));
-            list.Add(new Person(2, "Sam", "Smith", "42 Albemarle Way", "Washington", "DC", "US", "23912", "(433) 933-9343" ));
+            list.Add(new Person(2, "Sam", "Smith", "42 Albemarle Way", "Washington", "DC", "US", "23912", "(433) 933-9343"));
             list.Add(new Person(3, "Barbera", "Walters", "148 Hulbert Fields", "Dalewood", "VA", "US", "34331", "(833) 341-1243"));
             list.Add(new Person(4, "Homer", "Simpson", "5301 Simpson Way", "Las Vegas", "NV", "US", "39393", "(813) 421-4201"));
             list.Add(new Person(5, "Sam", "Donaldson", "1103 Shady lane", "Binford", "VT", "US", "31313", "(401) 201-2402"));
 
             List<string> row = new List<string>();
-            foreach (var p in list) 
+            foreach (var p in list)
             {
                 row.Add(PersonHelper.WriteLine(p));
             }
