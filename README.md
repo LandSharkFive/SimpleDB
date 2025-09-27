@@ -18,6 +18,9 @@ Performance depends on the number of rows in the Flat Files.
 | 50K | 200 |
 | 100K | 50 |
 
+## References
+
+1. "Sorting enormous files using C# external merge sort", Chris Hulbert, Dec 2011, Splinter.com, github.com/chrishulbert/ExternalMergeSort
 
 
 
