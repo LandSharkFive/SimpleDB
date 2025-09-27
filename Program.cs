@@ -6,12 +6,13 @@ namespace SimpleDB
     {
         static void Main(string[] args)
         {
-            // T2();
+            // T1();
         }
 
 
         static void T1()
         {
+            // timing
             var timer = new Stopwatch();
             timer.Start();
 
@@ -26,32 +27,44 @@ namespace SimpleDB
 
         static void T2()
         {
-            var a = IndexUtil.MemIndexById("b.csv", 1);
-            foreach (string s in a)
+            // test
+            var b = IndexUtil.GetIndex("b.csv", 1);
+            foreach(var item in b)
             {
-                Console.WriteLine(s);
+                Console.WriteLine($"{item.Id} {item.Position}");
             }
         }
 
         static void T3()
         {
+            // test
             IndexUtil.IndexById("b.csv", "c.csv", 1);
         }
 
+        static void T4()
+        {
+            // test
+            SortUtil.MergeSort("a.csv", "b.csv");
+        }
+
+
         static void M1()
         {
+            // Make test files.
             string[] x = { "e", "c", "a", "d", "g", "s" };
             File.WriteAllLines("a.txt", x);
         }
 
         static void M2()
         {
+            // Make test files.
             string[] x = { "e|g|d", "c|y|u", "a|w|e", "d|n|k", "g|q|c", "s|a|p" };
             File.WriteAllLines("a.txt", x);
         }
 
         static void M3()
         {
+            // Make test files.
             List<string> x = new List<string>();
             for (int i = 0; i < 10; i++)
             {
@@ -62,24 +75,21 @@ namespace SimpleDB
 
         static void M4()
         {
-            string input = "a.csv";
-            string output = "b.csv";
-
-            TestUtil.GetRandomFile(input, 4, 100);
-            FileUtil.SortById(input, output);
+            // Make test files.
+            TestUtil.GetRandomFile("a.csv", 4, 100);
+            FileUtil.SortById("a.csv", "b.csv");
         }
 
         static void M5()
         {
-            string input = "a.csv";
-            string output = "b.csv";
-
-            TestUtil.GetRandomFileInt(input, 4, 100);
-            FileUtil.SortByIntId(input, output);
+            // Make test files.
+            TestUtil.GetRandomFileInt("a.csv", 4, 100);
+            FileUtil.SortByIntId("a.csv", "b.csv");
         }
 
         static void M6()
         {
+            // Make test files.
             List<Person> list = new List<Person>();
             list.Add(new Person(1, "Bob", "Barker", "123 Windy Hill Rd", "Salt Lake", "NV", "US", "21343", "(212) 432-8333"));
             list.Add(new Person(2, "Sam", "Smith", "42 Albemarle Way", "Washington", "DC", "US", "23912", "(433) 933-9343"));
