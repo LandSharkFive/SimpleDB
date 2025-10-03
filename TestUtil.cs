@@ -75,5 +75,18 @@ namespace SimpleDB
             return sb.ToString();
         }
 
+        public static void GetDistinctFile(string outFile)
+        {
+            using (StreamWriter writer = new StreamWriter(outFile))
+            {
+                for (int i = 0; i < 200; i++)
+                {
+                    int value = random.Next(15);
+                    writer.WriteLine(value.ToString());
+                }
+            }
+        }
+
+
     }
 }

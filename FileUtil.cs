@@ -571,7 +571,7 @@ namespace SimpleDB
         }
 
         /// <summary>
-        /// Project columns.
+        /// Extract columns.
         /// </summary>
         /// <param name="inputFile">string</param>
         /// <param name="outputFile">string</param>
@@ -603,6 +603,52 @@ namespace SimpleDB
                         }
                     }
                     writer.WriteLine(sb.ToString());
+                }
+            }
+        }
+
+        /// <summary>
+        /// Distinct by column.
+        /// </summary>
+        /// <param name="inputFile">string</param>
+        /// <param name="outputFile">string</param>
+        /// <param name="column">int</param>
+        public static void DistinctByColumn(string inputFile, string outputFile, int column)
+        {
+            if (!File.Exists(inputFile))
+            {
+                return;
+            }
+
+            HashSet<string> set = new HashSet<string>();
+            using (StreamReader reader = new StreamReader(inputFile))
+            {
+                string line;
+                int counter = 0;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    counter++;
+                    string[] field = line.Split('|');
+                    if (column < field.Length)
+                    {
+                        string value = field[column];
+                        set.Add(value);
+                    }
+                }
+            }
+
+            List<string> list = new List<string>();
+            foreach (string item in set)
+            {
+                list.Add(item);
+            }
+
+            list.Sort();
+            using (StreamWriter writer = new StreamWriter(outputFile))
+            {
+                foreach (string piece in list)
+                {
+                    writer.WriteLine(piece);
                 }
             }
         }

@@ -47,6 +47,11 @@ namespace SimpleDB
             SortUtil.MergeSort("a.csv", "b.csv");
         }
 
+        static void T5()
+        {
+            // test
+            FileUtil.DistinctByColumn("a.csv", "b.csv", 0);
+        }
 
         static void M1()
         {
@@ -104,6 +109,11 @@ namespace SimpleDB
             }
 
             File.WriteAllLines("people.csv", row);
+        }
+
+        static void M7()
+        {
+            TestUtil.GetDistinctFile("a.csv");
         }
 
     }
