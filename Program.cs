@@ -6,7 +6,7 @@ namespace SimpleDB
     {
         static void Main(string[] args)
         {
-            // T1();
+            //T1();
         }
 
 
@@ -50,7 +50,7 @@ namespace SimpleDB
         static void T5()
         {
             // test
-            FileUtil.DistinctByColumn("a.csv", "b.csv", 0);
+            FileUtil.DistinctByColumnInt("a.csv", "b.csv", 2);
         }
 
         static void M1()

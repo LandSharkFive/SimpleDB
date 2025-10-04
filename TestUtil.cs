@@ -81,8 +81,11 @@ namespace SimpleDB
             {
                 for (int i = 0; i < 200; i++)
                 {
-                    int value = random.Next(15);
-                    writer.WriteLine(value.ToString());
+                    int a = random.Next(15);
+                    int b = random.Next(19);
+                    int c = random.Next(27);
+                    string value = string.Format("{0}|{1}|{2}", a, b, c);
+                    writer.WriteLine(value);
                 }
             }
         }

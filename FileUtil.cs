@@ -653,6 +653,52 @@ namespace SimpleDB
             }
         }
 
+        /// <summary>
+        /// Distinct by column of integer.
+        /// </summary>
+        /// <param name="inputFile">string</param>
+        /// <param name="outputFile">string</param>
+        /// <param name="column">int</param>
+        public static void DistinctByColumnInt(string inputFile, string outputFile, int column)
+        {
+            if (!File.Exists(inputFile))
+            {
+                return;
+            }
+
+            HashSet<int> set = new HashSet<int>();
+            using (StreamReader reader = new StreamReader(inputFile))
+            {
+                string line;
+                int counter = 0;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    counter++;
+                    string[] field = line.Split('|');
+                    if (column < field.Length)
+                    {
+                        int value = Convert.ToInt32(field[column]);
+                        set.Add(value);
+                    }
+                }
+            }
+
+            List<int> list = new List<int>();
+            foreach (int item in set)
+            {
+                list.Add(item);
+            }
+
+            list.Sort();
+            using (StreamWriter writer = new StreamWriter(outputFile))
+            {
+                foreach (int piece in list)
+                {
+                    writer.WriteLine(piece);
+                }
+            }
+        }
+
 
     }
 }
