@@ -10,13 +10,13 @@ The is a C# Console-Mode Project.  Use Visual Studio 2022 and above to compile.
 
 Performance depends on the number of rows in the Flat Files.  
 
-| Rows | Inserts Per Second |
-| --- | --- |
-| 100 | 1000 |
-| 5K | 333 |
-| 10K | 320 |
-| 50K | 200 |
-| 100K | 50 |
+| Rows | Inserts Per Second | Memory MB |
+| --- | --- | --- |
+| 100 | 1000 | 5 |
+| 5K | 333 | 20 |
+| 10K | 320 | 20 |
+| 50K | 200 | 20 |
+| 100K | 50 | 20 |
 
 ## References
 
