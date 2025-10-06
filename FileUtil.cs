@@ -699,6 +699,41 @@ namespace SimpleDB
             }
         }
 
+        /// <summary>
+        /// Get max integer by column.
+        /// </summary>
+        /// <param name="inputFile">string</param>
+        /// <param name="column">int</param>
+        /// <returns>int</returns>
+
+        public static int GetMaxInt(string inputFile, int column)
+        {
+            if (!File.Exists(inputFile))
+            {
+                return 0;
+            }
+
+            int result = 0;
+            using (StreamReader reader = new StreamReader(inputFile))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] field = line.Split('|');
+                    if (column < field.Length)
+                    {
+                        int value = Convert.ToInt32(field[column]);
+                        if (value > result)
+                        {
+                            result = value;
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
 
     }
 }
