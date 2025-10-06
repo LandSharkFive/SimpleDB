@@ -6,15 +6,15 @@ namespace SimpleDB
     {
         private static Random random = new Random();
 
-        public static int GetRandomInt(int max)
+        public static int GetRandomInt(int a)
         {
-            return random.Next(max);
+            return random.Next(a);
         }
 
 
         public static string GetRandomString(int length)
         {
-            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < length; i++)
@@ -76,6 +76,27 @@ namespace SimpleDB
         }
 
         public static void GetDistinctFile(string outFile)
+        {
+            List<string> list = new List<string>();
+            for (int i=0; i < 40; i++)
+            {
+                list.Add(GetRandomString(2));
+            }
+
+            using (StreamWriter writer = new StreamWriter(outFile))
+            {
+                for (int i = 0; i < 200; i++)
+                {
+                    string a = list[GetRandomInt(10)];
+                    string b = list[GetRandomInt(20)];
+                    string c = list[GetRandomInt(30)];
+                    string value = string.Format("{0}|{1}|{2}", a, b, c);
+                    writer.WriteLine(value);
+                }
+            }
+        }
+
+        public static void GetDistinctFileInt(string outFile)
         {
             using (StreamWriter writer = new StreamWriter(outFile))
             {

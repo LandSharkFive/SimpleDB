@@ -49,7 +49,7 @@ namespace SimpleDB
                         int k = result.CompareTo(id);
                         if (k == 0)
                         {
-                            // no duplicates
+                            // No duplicates allowed.
                             found = true;
                             writer.WriteLine(line);
                         }
@@ -160,7 +160,13 @@ namespace SimpleDB
             File.Move(outputFile, inputFile);
         }
 
-        public static void InsertOrUpdateById(string inputFile, string id, string data)
+        /// <summary>
+        /// Replace By Id.  Insert or update.
+        /// </summary>
+        /// <param name="inputFile">string</param>
+        /// <param name="id">string</param>
+        /// <param name="data">string</param>
+        public static void ReplaceById(string inputFile, string id, string data)
         {
             if (!File.Exists(inputFile))
             {
@@ -225,8 +231,8 @@ namespace SimpleDB
         /// </summary>
         /// <param name="input">string</param>
         /// <param name="column">int[]</param>
-        /// <param name="data">data[]</param>
-        /// <returns></returns>
+        /// <param name="data">string[]</param>
+        /// <returns>string</returns>
         public static string ReplaceFields(string input, int[] column, string[] data)
         {
             string[] field = input.Split('|');

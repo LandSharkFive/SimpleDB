@@ -7,7 +7,6 @@ namespace SimpleDB
         static void Main(string[] args)
         {
             //T1();
-
         }
 
 
@@ -114,7 +113,8 @@ namespace SimpleDB
 
         static void M7()
         {
-            TestUtil.GetDistinctFile("a.csv");
+            // Make test files.
+            TestUtil.GetDistinctFileInt("a.csv");
         }
 
     }
