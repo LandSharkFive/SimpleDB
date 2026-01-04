@@ -1,29 +1,71 @@
-# Simple DB
+# Simple DB: C# CSV & Flat File Engine
 
-A simple introduction to Flat Files and CSV files.  Insert, Update and Delete.  Search Flat Files. Sort Flat Files. Create and Copy Files.  Extract Columns. Select Rows.
+**Simple DB** is a beginner-friendly yet powerful C# library designed to manage CSV files—the "bread and butter" of the IT industry. It provides a straightforward way to handle data persistence without the overhead of a full database server.
 
-## Install and Build
+## 🚀 Overview
+While simple to implement, this engine uses **LINQ for batch processing** and supports both **Internal and External Sorting** to handle files that exceed system memory.
 
-The is a C# Console-Mode Project.  Use Visual Studio 2022 and above to compile.  
+* **Easy to Use:** Minimal setup for CRUD operations.
+* **Light Indexing:** Optimized for "Light Indexing" (1 index per 100 rows) to balance speed and memory.
+* **Powerful Features:** Includes column extraction, row selection, and file duplication.
 
-## Performance
+---
 
-Performance depends on the number of rows in the Flat Files.  
+## 📊 Performance & Complexity
 
-| Rows | Inserts Per Second | Memory MB |
-| --- | --- | --- |
-| 100 | 1000 | 5 |
-| 5K | 333 | 20 |
-| 10K | 320 | 20 |
-| 50K | 200 | 20 |
-| 100K | 50 | 20 |
+| Rows | Inserts/Sec | Memory |
+| :--- | :--- | :--- |
+| 100 | 1,000 | 5 MB |
+| 5K | 333 | 20 MB |
+| 10K | 320 | 20 MB |
+| 50K | 200 | 20 MB |
+| 100K | 50 | 20 MB |
 
-## References
+### Technical Specs
+* **Time Complexity:** $O(N)$ for Search, Index, Insert, and Delete.
+* **Space Complexity:** $O(N)$ where $N$ is the number of rows.
+* **Optimal File Size:** Works best for files **< 5 MB**. For larger datasets, processing speed may decrease due to $O(N)$ linear scanning.
 
-1. "Sorting enormous files using C# external merge sort", Chris Hulbert, Dec 2011, Splinter.com, github.com/chrishulbert/ExternalMergeSort
+---
 
+## 🛠 Installation & Requirements
+This is a **C# Console-Mode Project**. 
 
+1. Clone the repository.
+2. Open the solution in **Visual Studio 2022** or later.
+3. Build and Run.
 
+---
 
+## 💡 Quick Start: Optimized Implementation
 
+Using a `Dictionary` allows you to move from simple row-reading to high-speed data retrieval.
 
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.IO;
+
+public class SimpleDBExample
+{
+    public void ProcessData()
+    {
+        // 1. Read and Batch Process with LINQ
+        // Efficiently streams the file lines
+        var rows = File.ReadLines("data.csv")
+                       .Skip(1) // Skip Header
+                       .Select(line => line.Split(','))
+                       .ToList();
+
+        // 2. Optimization: Use a Dictionary for O(1) Lookups
+        // Converts the O(N) list into a fast-access map
+        Dictionary<string, string[]> dbMap = rows.ToDictionary(r => r[0], r => r);
+
+        // 3. Fast Retrieval
+        if (dbMap.TryGetValue("ID_123", out string[] record))
+        {
+            Console.WriteLine($"Found: {string.Join(" | ", record)}");
+        }
+    }
+}
