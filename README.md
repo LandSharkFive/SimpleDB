@@ -2,6 +2,8 @@
 
 **Simple DB** is a beginner-friendly yet powerful C# library designed to manage CSV files—the "bread and butter" of the IT industry. It provides a straightforward way to handle data persistence without the overhead of a full database server.
 
+
+
 ## 🚀 Overview
 While simple to implement, this engine uses **LINQ for batch processing** and supports both **Internal and External Sorting** to handle files that exceed system memory.
 
@@ -22,9 +24,9 @@ While simple to implement, this engine uses **LINQ for batch processing** and su
 | 100K | 50 | 20 MB |
 
 ### Technical Specs
-* **Time Complexity:** $O(N)$ for Search, Index, Insert, and Delete.
-* **Space Complexity:** $O(N)$ where $N$ is the number of rows.
-* **Optimal File Size:** Works best for files **< 5 MB**. For larger datasets, processing speed may decrease due to $O(N)$ linear scanning.
+* **Time Complexity:** Search/Index/Insert/Delete is $O(N)$.
+* **Space Complexity:** $O(N)$ where $N$ = Rows.Count.
+* **Optimal File Size:** Works best for files **< 5 MB**. For larger datasets, processing speed may decrease due to linear scanning.
 
 ---
 
@@ -52,14 +54,12 @@ public class SimpleDBExample
     public void ProcessData()
     {
         // 1. Read and Batch Process with LINQ
-        // Efficiently streams the file lines
         var rows = File.ReadLines("data.csv")
                        .Skip(1) // Skip Header
                        .Select(line => line.Split(','))
                        .ToList();
 
         // 2. Optimization: Use a Dictionary for O(1) Lookups
-        // Converts the O(N) list into a fast-access map
         Dictionary<string, string[]> dbMap = rows.ToDictionary(r => r[0], r => r);
 
         // 3. Fast Retrieval
