@@ -1,0 +1,3 @@
+References
+
+1.  "Sorting enormous files using C# external merge sort", Chris Hulbert, Dec 2011, github.com/chrishulbert/ExternalMergeSort
